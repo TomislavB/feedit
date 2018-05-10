@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extend: false }));
 app.use(bodyParser.json());
+app.use(cors);
 
 app.listen(3001, () => {
   console.log("App Successful listening on port 3001");
