@@ -9,6 +9,6 @@ export default (
   <Switch>
     {/* <Route component={App} path="/" exact /> */}
     <Route component={ArticleList} path="/articles" />
-    <Route component={CreateArticle} path="/articles/new" />
+    <Route component={CreateArticle} path="/add" />
   </Switch>
 );
