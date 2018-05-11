@@ -7,7 +7,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extend: false }));
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 
 app.listen(3001, () => {
   console.log("App Successful listening on port 3001");
@@ -36,7 +36,8 @@ app.post("/articles", (req, res) => {
     {
       title: req.body.title,
       author: req.body.author,
-      text: req.body.text
+      text: req.body.text,
+      url: req.body.url
     },
     (err, articles) => {
       if (err) console.log(handleError(err));
