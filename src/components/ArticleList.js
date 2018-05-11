@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button } from "reactstrap";
+import { Link } from "react-router-dom";
+
 import "./ArticleList.css";
 
 class ArticleList extends Component {
@@ -7,18 +10,17 @@ class ArticleList extends Component {
     super(props);
 
     this.state = {
-      characters: []
+      articles: []
     };
   }
 
   componentDidMount() {
     console.log("Komponenta je montirana!");
     axios
-      .get(`https://swapi.co/api/people`)
+      .get(`http://localhost:3001/articles`)
       .then(res => {
-        console.log(res);
-        console.log("test");
-        //   this.setState({ characters: res.data.results });
+        console.log(res.data);
+        this.setState({ articles: res.data });
       })
       .catch(err => {
         console.log(err);
@@ -28,14 +30,21 @@ class ArticleList extends Component {
   render() {
     return (
       <div>
-        <h1>StarWars Characters</h1>
-        {this.state.characters.map(character => (
+        <h1>Articles</h1>
+        {this.state.articles.map(article => (
           <div className="card">
-            <h6>
-              {character.name} - visina: {character.height} cm
-            </h6>
+            <a href={article.url}>
+              <h1>{article.title}</h1>
+            </a>
+            <h3>Autor: {article.author}</h3>
+            <p>{article.text}</p>
+            <p>Votes: {article.votes}</p>
+            <p>Date: {article.date}</p>
           </div>
         ))}
+        <Link to="/articles/add">
+          <Button color="primary">Add New Article</Button>
+        </Link>
       </div>
     );
   }
