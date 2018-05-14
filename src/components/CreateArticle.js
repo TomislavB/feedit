@@ -20,21 +20,20 @@ class CreateArticle extends Component {
 
     this.state = {
       title: "",
-      author: "Unknown",
-      url: "http://www.index.hr"
+      author: "",
+      url: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleChange(event) {
-    console.log("key pressed: ", event.target.value);
-    this.setState({ title: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
-    console.log("Paket je spreman na slanje: ", this.state);
     axios
       .post("http://localhost:3001/articles", this.state)
       .then(function(response) {
@@ -43,17 +42,15 @@ class CreateArticle extends Component {
       .catch(function(error) {
         console.log(error);
       });
-    // axios.post('/user', {
-    //   firstName: 'Fred',
-    //   lastName: 'Flintstone'
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
     event.preventDefault();
+  }
+
+  handleCancel() {
+    this.setState({
+      title: "",
+      author: "",
+      url: ""
+    });
   }
 
   render() {
@@ -71,6 +68,7 @@ class CreateArticle extends Component {
                   id="title"
                   value={this.state.title}
                   onChange={this.handleChange}
+                  placeholder="Title"
                 />
               </FormGroup>
               <FormGroup>
@@ -81,9 +79,10 @@ class CreateArticle extends Component {
                   id="author"
                   value={this.state.author}
                   onChange={this.handleChange}
+                  placeholder="Author"
                 />
               </FormGroup>
-              {/* <FormGroup>
+              <FormGroup>
                 <Label for="url">URL</Label>
                 <Input
                   type="url"
@@ -91,10 +90,23 @@ class CreateArticle extends Component {
                   id="url"
                   value={this.state.url}
                   onChange={this.handleChange}
+                  placeholder="URL"
                 />
-              </FormGroup> */}
-              <Button onSubmit={this.handleSubmit}>Submit</Button>
-              <Button>Cancel</Button>
+              </FormGroup>
+              <Container>
+                <Row>
+                  <Col>
+                    <Button color="success" onSubmit={this.handleSubmit}>
+                      Submit
+                    </Button>
+                  </Col>
+                  <Col>
+                    <Button color="danger" onClick={this.handleCancel}>
+                      Cancel
+                    </Button>
+                  </Col>
+                </Row>
+              </Container>
             </Form>
           </Col>
         </Row>
