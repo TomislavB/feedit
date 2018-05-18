@@ -17,7 +17,7 @@ cd feedit
 ```
 
 Ako nemate .env file, pošaljite mi email za pristup, a u suprotnom ga stavite u root direktorij.
-Ukoliko nemate Node instaliran, instalirajte ga s [ovog linka](https://nodejs.org/en/download/.
+Ukoliko nemate Node instaliran, instalirajte ga s [ovog linka](https://nodejs.org/en/download/)
 
 * Instalirajte potrebne 'dependencies' uz pomoć npm-a
 
