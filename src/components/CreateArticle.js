@@ -55,9 +55,9 @@ class CreateArticle extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="form">
         <Row>
-          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Col sm="12" md={{ size: 4, offset: 4 }}>
             <h1>Add New Article</h1>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>

@@ -1,16 +1,37 @@
 import React, { Component } from "react";
 import ArticleList from "./components/ArticleList";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
+
+import router from "./router";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Feedit</h1>
-        </header>
-        <p className="App-intro">Ovdje će biti popis članaka.</p>
-        <ArticleList />
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Feedit</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={true} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/articles/">Articles</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/add">Add New Article</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+        {router}
       </div>
     );
   }

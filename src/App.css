@@ -30,9 +30,3 @@
     transform: rotate(360deg);
   }
 }
-
-.card {
-  background-color: yellow;
-  height: 50px;
-  margin: 10px;
-}
