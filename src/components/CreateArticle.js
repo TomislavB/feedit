@@ -42,6 +42,8 @@ class CreateArticle extends Component {
       .catch(function(error) {
         console.log(error);
       });
+
+    this.props.history.push("/articles");
     event.preventDefault();
   }
 
@@ -51,6 +53,8 @@ class CreateArticle extends Component {
       author: "",
       url: ""
     });
+
+    this.props.history.push("/articles");
   }
 
   render() {
